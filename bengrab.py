@@ -118,9 +118,7 @@ class BensoundGrabber:
             cookies=self.cookies
         )
         d = response.headers['content-disposition'].encode("latin1").decode("utf-8")
-        print(d)
         filename = re.findall(u'filename=\"(.+)\"', d)[0]
-        print(filename)
         with open(self.sources_path / filename, 'wb') as f:
             f.write(response.content)
             print(f'Saved as: {f.name}')
