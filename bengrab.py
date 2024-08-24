@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import time
 import zipfile
 from pathlib import Path
 from urllib.parse import parse_qs
@@ -81,8 +82,10 @@ class BensoundGrabber:
         self.product_id = self.get_product_id()
 
     def grab(self):
+        time.sleep(1)
         self.get_license_file(self.product_id)
 
+        time.sleep(1)
         source_filename = self.get_source_file(self.product_id)
 
         tracks = self.extract_tracks(source_filename)
